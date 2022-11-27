@@ -1,0 +1,58 @@
+﻿@model GYM_MANAGER_PROJECTFSOFT.Models.KHOTHIETBI
+
+@{
+    ViewBag.Title = "EditDeviceInStock";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Edit Status Device In Stock</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaThietBiTrongKho)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaThietBi, "MaThietBi", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.MaThietBi, new {@class = "form-control", @readonly = "readonly"})
+                @*@Html.DropDownList("MaThietBi", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(model => model.MaThietBi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaYeuCauNhap, "MaYeuCauNhap", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.MaYeuCauNhap, new { @class = "form-control", @readonly = "readonly" })
+                @*@Html.DropDownList("MaYeuCauNhap", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(model => model.MaYeuCauNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrangThaiTonKho, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TrangThaiTonKho)
+                    @Html.ValidationMessageFor(model => model.TrangThaiTonKho, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-outline-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button type="button" class="btn btn-outline-info">@Html.ActionLink("Back to List", "DeviceListInStock")</button>
+</div>

@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "DeviceMap";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<style>
+    #map {
+        height: 600px;
+        width: 1600px;
+    }
+</style>
+<br />
+
+
+<h2 class="text-center" style="font-size: 50px;">Club Map</h2>
+
+<div style="display: flex;">
+    <div class="row" style="margin: auto; padding-bottom: 100px; padding-top: 50px;">
+        <div id="map"></div>
+        <script>
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById("map"),
+                    {
+                        center: { lat: 15.9797699, lng: 108.2603153 },
+                        zoom: 12,
+                    });
+                var markerClub1 = new google.maps.Marker({
+                    position: { lat: 15.9797699, lng: 108.2603153 },
+                    map: map,
+                    //fsoft
+                });
+                var markerClub2 = new google.maps.Marker({
+                    position: { lat: 16.0658209, lng: 108.1453555 },
+                    map: map,
+                    //Gutim Lien Chieu
+                });
+                var markerClub3 = new google.maps.Marker({
+                    position: { lat: 16.0738661, lng: 108.1476237 },
+                    map: map,
+                    //Gutim Hoa Khanh
+                });
+                var contentStringClub1 =
+                    '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    "</div>" +
+                    '<h1 id="firstHeading" class="firstHeading">FsoftClub</h1>' +
+                    '<div id="bodyContent">' +
+                    "<p><b>FsoftClub</b>, FPT Complex, Khu đô thị FPT City, Ngũ Hành Sơn, Đà Nẵng 550000  "
+
+                var infowindowClub1 = new google.maps.InfoWindow({
+                    content: contentStringClub1
+                });
+                markerClub1.addListener('mouseover', function () {
+                    infowindowClub1.open(map, markerClub1);
+                });
+                markerClub1.addListener('mouseout', function () {
+                    infowindowClub1.close(map, markerClub1);
+                });
+
+                var contentStringClub2 =
+                    '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    "</div>" +
+                    '<h1 id="firstHeading" class="firstHeading">Gutim</h1>' +
+                    '<div id="bodyContent">' +
+                    "<p><b>GuTim Liên Chiểu</b>, 213, Phạm Như Xương, P. Hòa Khánh Nam, Q. Liên Chiểu, Tp. Đà Nẵng "
+
+                var infowindowClub2 = new google.maps.InfoWindow({
+                    content: contentStringClub2
+                });
+                markerClub2.addListener('mouseover', function () {
+                    infowindowClub2.open(map, markerClub2);
+                });
+                markerClub2.addListener('mouseout', function () {
+                    infowindowClub2.close(map, markerClub2);
+                });
+
+                var contentStringClub3 =
+                    '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    "</div>" +
+                    '<h1 id="firstHeading" class="firstHeading">GuTim</h1>' +
+                    '<div id="bodyContent">' +
+                    "<p><b>GuTim Hòa Khánh</b>, K82/68, Nguyễn Lương Bằng, P. Hòa Khánh Bắc, Q. Liên Chiểu, Tp. Đà Nẵng   "
+
+                var infowindowClub3 = new google.maps.InfoWindow({
+                    content: contentStringClub3
+                });
+                markerClub3.addListener('mouseover', function () {
+                    infowindowClub3.open(map, markerClub3);
+                });
+                markerClub3.addListener('mouseout', function () {
+                    infowindowClub3.close(map, markerClub3);
+                });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcB75dc6_HMsVbar1D_ZxRGb_CNCxwMlg&callback=initMap"
+                async defer></script>
+
+    </div>
+</div>

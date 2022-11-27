@@ -1,0 +1,66 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model TheThanhVienDetail
+
+@{
+    ViewBag.Title = "CreateMemberCard";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div style="width: 100%; background-position: center" data-setbg="../Content/ImagesGym/Background_CreateCard.jpg" ) class="set-bg">
+    <div class="container register"
+         style="padding: 3%;">
+        <div class="row">
+            <div class="col-md-12 register-form"
+                 style="background-color: rgba(0, 0, 0, 0.5); border-top-left-radius: 10% 50%; border-bottom-left-radius: 10% 50%; border-bottom-right-radius: 10% 50%; border-top-right-radius: 10% 50%; margin: auto;">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading"
+                            style="color: #ee4f4d; border-bottom: 1px solid #ee4f4d; padding-bottom: 10px; margin-top: 8%; margin-bottom: -15%; text-align: center;">
+                            Create Member Card
+                        </h3>
+                        @using (Html.BeginForm("CreateMemberCard", "User", FormMethod.Post))
+                        {
+                        @Html.HiddenFor(x => x.MaLoaiTheThanhVien)
+                        @Html.HiddenFor(x => x.HinhAnhThe)
+                        @Html.HiddenFor(x => x.MaTaiKhoan)
+                        <div class="register-form" style="padding: 10%; margin-top: 10%;">
+                            <div class="form-group row" style="margin-top: 15px; height: 40px;">
+                                <div class="col-sm-3" style=" text-align: right; ">
+                                    <label style="padding-top: 4px; margin-bottom: 0;font-weight: 500; margin: 5px; color: white;">Name Card</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(x => x.TenThe, new { style = "width: 80%; height: 35px;", @class = "form-control", @readonly = "readonly" })
+
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-top: 15px; height: 40px;">
+                                <div class="col-sm-3" style=" text-align: right; ">
+                                    <label style="padding-top: 4px; margin-bottom: 0;font-weight: 500; margin: 5px; color: white;">Code Card</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(x => x.CodeThe, new { style = "width: 80%; height: 35px;", @class = "form-control", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            @*<div class="form-group row" style="margin-top: 15px; height: 40px;">
+                                <div class="col-sm-3" style=" text-align: right; ">
+                                    <label style="padding-top: 4px; margin-bottom: 0;font-weight: 500; margin: 5px; color: white;">Registration Date</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(x => x.NgayDangKy, "{0:MM/dd/yyyy}", new { style = "width: 80%; height: 35px;", @class = "form-control", @readonly = "readonly" })
+                                </div>
+                            </div>*@
+                            <div class="form-group row" style="margin-top: 15px; height: 40px; justify-content: space-around;">
+                                <span style="color: red;">@ViewBag.Message</span>
+                            </div>
+                            <div style="width: 100%; display: flex;">
+                                <input type="submit" class="btnCreateCard" value="Create"
+                                       style="margin: auto; border: none; border-radius: 1.5rem; padding: 2%; background: linear-gradient(to right, #eb3c5a, #f67831); color: #fff; font-weight: 600; width: 50%;" />
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

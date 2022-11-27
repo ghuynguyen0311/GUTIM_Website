@@ -1,0 +1,99 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<GYM_MANAGER_PROJECTFSOFT.Models.NHAPTHIETBI>
+@using GYM_MANAGER_PROJECTFSOFT.Models
+
+@{ 
+    TAIKHOAN taikhoan = Session["TaiKhoan"] as TAIKHOAN;
+}
+
+@{
+    ViewBag.Title = "ImportDeviceTable";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Import Device List</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" class="btn btn-outline-info" />
+    </p>
+}
+
+<table class="table">
+    <thead style="background-color: #446ad7;">
+        <tr style="color: white;">
+            <th>
+                <p class="text-center">RequiredCode</p>
+            </th>
+            <th>
+                <p class="text-center">DeviceName</p>
+            </th>
+            <th>
+                <p class="text-center">Amount</p>
+            </th>
+            <th>
+                <p class="text-center">DeviceImage</p>
+            </th>
+            <th>
+                <p class="text-center">RequiredImportDate</p>
+            </th>
+            <th>
+                <p class="text-center">Describe</p>
+            </th>
+            <th>
+                <p class="text-center">Status</p>
+            </th>
+            <th>
+                <p class="text-center">Action</p>
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.MaYeuCauNhap)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.TenThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.SoLuong)</p>
+            </td>
+            <td>
+                <p class="text-center"><img src="@Url.Content("~/Content/ImagesGym/" + item.HinhThietBi)" alt="" style="width: 200px; height: 150px"></p>
+            </td>
+            <td>
+                <p class="text-center">@item.NgayYeuCau.Value.ToString("MM/dd/yyyy")</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.MoTa)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.TrangThaiNhapThietBi)</p>
+            </td>
+            @if (item.TrangThaiNhapThietBi == false)
+            {
+                <td style="text-align: center;">
+                    <a class="btn btn-outline-success" href="@Url.Action("EditImportDevice", "ImportDeviceManager", new {id = item.MaYeuCauNhap})">Edit</a>
+                    @if (taikhoan.TaiKhoan1 == "Kit")
+                    {
+                        <a class="btn btn-outline-success" href="@Url.Action("ApproveImportDevice", "ImportDeviceManager", new {id = item.MaYeuCauNhap})">Approve</a>
+                    }
+                </td>
+            }
+        </tr>
+
+    }
+
+</table>
+
+<p class="text-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+<div class="nav justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("ImportDeviceTable", new { page = page }))
+</div>

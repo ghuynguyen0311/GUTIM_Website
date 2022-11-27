@@ -1,0 +1,83 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<GYM_MANAGER_PROJECTFSOFT.Models.PackageDetail>
+
+@{
+    ViewBag.Title = "PackageTable";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Package List</h2>
+
+
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+</style>
+<table class="table">
+    <thead style="background-color: #446ad7;">
+        <tr style="color: white;">
+            <th>
+                <p class="text-center">PackageCode</p>
+            </th>
+            <th>
+                <p class="text-center">PackageName</p>
+            </th>
+            <th>
+                <p class="text-center">ClubName</p>
+            </th>
+            <th>
+                <p class="text-center">ServiceName</p>
+            </th>
+            <th>
+                <p class="text-center">Duration</p>
+            </th>
+            <th>
+                <p class="text-center">PackagePrice</p>
+            </th>
+            <th>
+                <p class="text-center">Action</p>
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.MaGoiTap)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.TenGoiTap)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.TenClub)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.TenDichVu)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.ThoiHanGoiTap)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.GiaGoiTap)</p>
+            </td>
+            <td style="text-align: center;">
+                <a class="btn btn-outline-success" href="@Url.Action("EditPackage", "PackageAndCouponManager", new {id = item.MaGoiTap})">Edit</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p class="text-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+<div class="nav justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("PackageTable", new { page = page }))
+</div>
+

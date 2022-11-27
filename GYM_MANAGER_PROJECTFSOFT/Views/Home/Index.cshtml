@@ -1,0 +1,134 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model IEnumerable<DICHVU>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<section class="about-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-pic">
+                    <img src="~/Content/img/about-pic.jpg" alt="">
+                    <a href="https://www.youtube.com/watch?v=SlPhMPnQ58k" class="play-btn video-popup">
+                        <img src="~/Content/img/play.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-text">
+                    <h2>Story About Us</h2>
+                    <p class="first-para">
+                        We develop a website to offer online training programs to clients, and there you can
+                        find out more about the requirements fair fitness and health
+                    </p>
+                    <p class="second-para">
+                        Out team is made up of a team of skilled, professionally qualified FPT students that
+                        always aim to provide clients with as many advantages as they can
+                    </p>
+                    <a href="#" class="primary-btn">Read More</a>
+                </div>
+            </div>
+        </div>  
+    </div>
+</section>
+
+<section class="services-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="services-pic">
+                    <img src="~/Content/img/services/service-pic.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-items">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="services-item bg-gray">
+                                <img src="~/Content/img/services/service-icon-1.png" alt="">
+                                <h4>Strategies</h4>
+                                <p>
+                                    If you want to know how to get new members in a gym and retain them, you have to know how to set up a workout routine
+                                </p>
+                            </div>
+                            <div class="services-item bg-gray pd-b">
+                                <img src=   "~/Content/img/services/service-icon-3.png" alt="">
+                                <h4>Workout</h4>
+                                <p>
+                                    The last 3 to 4 rounds are when the muscles really develop. 
+                                    This moment of excruciating pain will be what separates the champion from the rest.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="services-item">
+                                <img src="~/Content/img/services/service-icon-2.png" alt="">
+                                <h4>Yoga</h4>
+                                <p>
+                                    Counteract the stresses of modern life by becoming more mindful and compassionate
+                                </p>
+                            </div>
+                            <div class="services-item pd-b">
+                                <img src="~/Content/img/services/service-icon-4.png" alt="">
+                                <h4>Weight Loss</h4>
+                                <p>
+                                    Make your loved ones proud, and those who unfortunately don't like you get angry because they are jealous of your body.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="classes-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>UNLIMITED CLASSES</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4">
+                    <div class="single-class-item set-bg" data-setbg="@Url.Content("../Content/ImagesGym/" + item.HinhAnh1)">
+                        <div class="si-text">
+                            <h4>@item.TenDichVu</h4>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="footer-banner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="footer-banner-item set-bg" data-setbg="../Content/img/footer-banner/footer-banner-1.jpg">
+                    <span>New member</span>
+                    <h2>7 days for free</h2>
+                    <p>Complete the training sessions with us, surely you will be happy</p>
+                    <a href="#" class="primary-btn">Get Started</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer-banner-item set-bg" data-setbg="../Content/img/footer-banner/footer-banner-2.jpg">
+                    <span>contact us</span>
+                    <h2>0328284430</h2>
+                    <p>If you trust us on your journey they dark sex does not disappoint you!</p>
+                    <a href="#" class="primary-btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

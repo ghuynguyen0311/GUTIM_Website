@@ -1,0 +1,89 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model BLOG
+
+@{
+    ViewBag.Title = "BlogDetail";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+
+<section class="blog-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="bd-text">
+                    <div class="bd-title">
+                        <a href="#" style="align-content: center; font-size: 50px; color: #868080; width: 1000px; text-transform: uppercase; font-weight: 600;">@Model.TieuDe</a>
+                    </div>
+                </div>
+                <img style=" margin-left: 23%; margin-top: -3em; margin-bottom: 25px; width: 50%;" src="@Url.Content("~/Content/img/blog/" + Model.HinhAnh)" alt="">
+                <div class="bd-more-text">
+                    <div class="bm-item">
+                    </div>
+                    <i style="margin-top: 25px; font-size: 23px; line-height: 36px;text-align:justify;display:flex">   @Model.NoiDung  </i>
+                    <div class="bm-item">
+                    </div>
+                </div>
+                <div class="bd-quote">
+                    <samp></samp>
+                    <p style=" font-size: 17px; margin-top: 15px; text-align: center;">
+                        “Việc ăn uống cực kỳ quan trong đối với mỗi con người, đặc biệt là những người tập thể thao và lao động nhiều.”
+                    </p>
+                    <div class="quote-author">
+                        <h5>Dần Ngô</h5>
+                        <span>CEO-DeerCreative</span>
+                    </div>
+                </div>
+                <div class="bd-last-para">
+
+                </div>
+                <div class="tag-share">
+                    <div class="social-share">
+                        <span>Share:</span>
+                        <a href="#" style="color: blue;"><i class="fa fa-facebook"></i></a>
+                        <a href="#" style="color: blue;"><i class="fa fa-twitter"></i></a>
+                        <a href="#" style="color: blue;"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" style="color: blue;"><i class="fa fa-instagram"></i></a>
+                        <a href="#" style="color: blue;"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+                <div class="blog-author">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="ba-pic">
+                                <img style="height:200px" src="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/195793453_1479162652443547_1998955524407424599_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=730e14&_nc_ohc=_-3uCYxtgVsAX99kSxD&_nc_ht=scontent.fdad1-3.fna&oh=00_AT_ygyk3wF9g0YZo7IqSmpFGds8uSniMJoskrUCaUueJzA&oe=631712FE">
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="ba-text">
+                                <h5>Gia Huy</h5>
+                                <p>
+                                    Sinh viên trường Đại học FPT Đà Nẵng (không có ng iu :))
+                                </p>
+                                <div class="bt-social">
+                                    <a href="#" style="color: blue;"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" style="color: blue;"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" style="color: blue;"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#" style="color: blue;"><i class="fa fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/mixitup.min.js"></script>
+    <script src="~/Content/js/jquery.slicknav.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+
+</section>
+
+
+

@@ -1,0 +1,72 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<GYM_MANAGER_PROJECTFSOFT.Models.GIAMGIA>
+
+
+@{
+    ViewBag.Title = "CouponList";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Coupon List</h2>
+
+
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+</style>
+<table class="table">
+    <thead style="background-color: #446ad7;">
+        <tr style="color: white;">
+            <th>
+                <p class="text-center">CouponCode</p>
+            </th>
+            <th>
+                <p class="text-center">DiscountCode</p>
+            </th>
+            <th>
+                <p class="text-center">DiscountAmount</p>
+            </th>
+            <th>
+                <p class="text-center">Amount</p>
+            </th>
+            <th>
+                <p class="text-center">Action</p>
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.MaGiamGia)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.CodeGiamGia)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.SoTienGiamGia)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.Soluong)</p>
+            </td>
+            <td style="text-align: center;">
+                <a class="btn btn-outline-success" href="@Url.Action("EditCoupon", "PackageAndCouponManager", new {id = item.MaGiamGia})">Edit</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p class="text-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+<div class="nav justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("CouponList", new { page = page }))
+</div>
+

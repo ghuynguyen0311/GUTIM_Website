@@ -1,0 +1,77 @@
+﻿@model GYM_MANAGER_PROJECTFSOFT.Models.THIETBI
+
+
+@{
+    ViewBag.Title = "DeleteDevice";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Delete</h2>
+
+<div>
+    <h4 class="text-center">Information about the Services you want to delete: </h4>
+    <hr />
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    <p class="text-center">DeviceCode</p>
+                </th>
+                <th>
+                    <p class="text-center">DeviceName</p>
+                </th>
+                <th>
+                    <p class="text-center">ImportDate</p>
+                </th>
+                <th>
+                    <p class="text-center">DeviceStatus</p>
+                </th>
+                <th>
+                    <p class="text-center">DeviceImage</p>
+                </th>
+                <th>
+                    <p class="text-center">DeviceCategory</p>
+                </th>
+                <th>
+                    <p class="text-center">RoomName</p>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                <p class="text-center">@Html.DisplayFor(model => model.MaThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(model => model.TenThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(model => model.NgayNhapThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(model => model.TrangThaiThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center"><img src="@Html.DisplayFor(model => model.HinhThietBi)" alt="" style="width: 200px; height: 150px"></p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(model => model.LOAITHIETBI.TenLoaiThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(model => model.Phong.TenPhong)</p>
+            </td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-outline-danger" />
+            <button type="button" class="btn btn-outline-info">@Html.ActionLink("Back to List", "DeviceTables")</button>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,69 @@
+﻿@model GYM_MANAGER_PROJECTFSOFT.Models.DICHVU
+
+@{
+    ViewBag.Title = "ServiceDelete";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Delete</h2>
+
+<div>
+    <h4 class="text-center">Information about the Services you want to delete: </h4>
+    <hr />
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    <p class="text-center">ServiceCode</p>
+                </th>
+                <th>
+                    <p class="text-center">ServiceName</p>
+                </th>
+                <th>
+                    <p class="text-center">ClubName</p>
+                </th>
+                <th>
+                    <p class="text-center">Image 1</p>
+                </th>
+                <th>
+                    <p class="text-center">Image 2</p>
+                </th>
+                <th>
+                    <p class="text-center">Image 3</p>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                <p class="text-center">@Html.DisplayFor(model => model.MaDichVu)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(model => model.TenDichVu)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(model => model.CLUB.TenClub)</p>
+            </td>
+            <td>
+                <p class="text-center"><img src="@Html.DisplayFor(model => model.HinhAnh1)" alt="" style="width: 200px; height: 150px"></p>
+            </td>
+            <td>
+                <p class="text-center"><img src="@Html.DisplayFor(model => model.HinhAnh2)" alt="" style="width: 200px; height: 150px"></p>
+            </td>
+            <td>
+                <p class="text-center"><img src="@Html.DisplayFor(model => model.HinhAnh3)" alt="" style="width: 200px; height: 150px"></p>
+            </td>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-outline-danger" />
+            <button type="button" class="btn btn-outline-info">@Html.ActionLink("Back to List", "ServiceTable")</button>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,98 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<GYM_MANAGER_PROJECTFSOFT.Models.KHOTHIETBI>
+@using GYM_MANAGER_PROJECTFSOFT.Models
+
+@{ 
+    TAIKHOAN taikhoan = Session["TaiKhoan"] as TAIKHOAN;
+}
+
+@{
+    ViewBag.Title = "DeviceListInStock";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Import List In Stock</h2>
+
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+</style>
+
+<table class="table">
+    <thead style="background-color: #446ad7;">
+        <tr style="color: white;">
+            <th>
+                <p class="text-center">DeiveCodeInStock</p>
+            </th>
+            <th>
+                <p class="text-center">DeviceName</p>
+            </th>
+            <th>
+                <p class="text-center">Amount</p>
+            </th>
+            <th>
+                <p class="text-center">DeviceImage</p>
+            </th>
+            <th>
+                <p class="text-center">RequiredImportDate</p>
+            </th>
+            <th>
+                <p class="text-center">Describe</p>
+            </th>
+            <th>
+                <p class="text-center">StatusInStock</p>
+            </th>
+            <th>
+                <p class="text-center">Action</p>
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.MaThietBiTrongKho)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.NHAPTHIETBI.TenThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.NHAPTHIETBI.SoLuong)</p>
+            </td>
+            <td>
+                <p class="text-center"><img src="@Url.Content("~/Content/ImagesGym/" + item.NHAPTHIETBI.HinhThietBi)" alt="" style="width: 200px; height: 150px"></p>
+            </td>
+            <td>
+                <p class="text-center">@item.NHAPTHIETBI.NgayYeuCau.Value.ToString("MM/dd/yyyy")</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.NHAPTHIETBI.MoTa)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.TrangThaiTonKho)</p>
+            </td>
+            <td style="text-align: center;">
+                @if (taikhoan.TaiKhoan1 == "Kit")
+                {
+                    <a class="btn btn-outline-success" href="@Url.Action("EditDeviceInStock", "StockManager", new {id = item.MaThietBiTrongKho})">Edit</a>
+                }
+                <a class="btn btn-outline-danger" href="@Url.Action("DeleteDeviceInStock", "StockManager", new {id = item.MaThietBiTrongKho})">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p class="text-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+<div class="nav justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("DeviceListInStock", new { page = page }))
+</div>
+

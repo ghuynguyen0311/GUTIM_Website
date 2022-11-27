@@ -1,0 +1,72 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model TAIKHOAN
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class="set-bg" data-setbg="../Content/templateregister/images/3.jpg">
+    <div class="main-content-agile">
+        <div class="sub-main-w3">
+            @using (Html.BeginForm("Registration", "Home", FormMethod.Post))
+            {
+                <h2>Create an Account!</h2>
+                <br />
+                <h2 style="color: red;">@ViewBag.Message</h2>
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Role, false)
+                <div class="form-style-agile">
+                    @Html.LabelFor(model => model.TaiKhoan1)
+                    <div class="pom-agile">
+                        <span class="fa fa-user-o" aria-hidden="true"></span>
+                        @Html.TextBoxFor(model => model.TaiKhoan1, new { @placeholder = "Your Account", @type = "text", @required = "" })
+                    </div>
+                </div>
+                <div class="form-style-agile">
+                    @Html.LabelFor(model => model.Email)
+                    <div class="pom-agile">
+                        <span class="fa fa-envelope" aria-hidden="true"></span>
+                        @Html.TextBoxFor(model => model.Email, new { @placeholder = "Your Email", @type = "email", @required = "" })
+                    </div>
+                </div>
+                <div class="form-style-agile">
+                    @Html.LabelFor(model => model.SoDienThoai)
+                    <div class="pom-agile">
+                        <span class="fa fa-phone" aria-hidden="true"></span>
+                        @Html.TextBoxFor(model => model.SoDienThoai, new { @placeholder = "Your NumberPhone", @required = "" })
+                    </div>
+                </div>
+                <div class="form-style-agile">
+                    @Html.LabelFor(model => model.MatKhau)
+                    <div class="pom-agile">
+                        <span class="fa fa-key" aria-hidden="true"></span>
+                        @Html.PasswordFor(model => model.MatKhau, new { @placeholder = "Password", @type = "password", @required = "" })
+                    </div>
+                </div>
+                <div style="display: none">
+                    <input type="text" name="txtRole" value="false"/>
+                </div>
+                <div class="form-style-agile">
+                    <label>Confirm Password</label>
+                    <div class="pom-agile">
+                        <span class="fa fa-key" aria-hidden="true"></span>
+                        <input type="password" placeholder="Confirm Password" required name="txtPassword" />
+                    </div>
+                </div>
+                <input type="submit" value="Register Account">
+            }
+        </div>
+        <div class="img-w3layouts">
+            <img src="~/Content/templateregister/images/1.jpg" alt="">
+        </div>
+    </div>
+</div>
+<style>
+    h2 {
+        color: white;
+    }
+</style>
+
+
+

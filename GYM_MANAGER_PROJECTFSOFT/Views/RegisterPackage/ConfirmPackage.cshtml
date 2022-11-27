@@ -1,0 +1,180 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model GoiTapAndProfileDetail
+
+@{
+    THETHANHVIEN thethanhvien = ViewBag.TheThanhVien as THETHANHVIEN;
+    Profile profile = ViewBag.Profile as Profile;
+}
+
+@{
+    ViewBag.Title = "RegisterPackageForm";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-8" style="width: 100%; margin: 10px auto; border: 1px solid grey;">
+        <div class="no-title" style="height: 20px;"></div>
+        <div class="form-horizontal" action="#">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3 mgbt-xs-20">
+                        <div class="form-group">
+                            <div class="col-xs-12 mt-4">
+                                <div class="form-img text-center mgbt-xs-15">
+                                    <img alt="example image" src="@Url.Content("~/Content/ImagesGym/" + profile.Avatar)"
+                                         style="width: 100%; overflow: hidden; border-radius: 10px; height: 400px;">
+                                </div>
+                                <br />
+                                <div>
+                                    <table class="table table-striped table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:30%;">DOB</td>
+                                                <td style="text-align: right;">
+                                                    <span class="label label-success">
+                                                        @profile.NgaySinh.Value.ToString("MM/dd/yyyy")
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 mt-4">
+                        <h2 class="mgbt-xs-20" style="text-align: center;">Register for the package service</h2>
+                        @using (Html.BeginForm("ConfirmPackage", "RegisterPackage", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(x => x.MaDichVu)
+                            @Html.HiddenFor(x => x.MaGoiTap)
+                            @Html.HiddenFor(x => x.MaProfile)
+                            @Html.HiddenFor(x => x.MaGoiTap)
+                            @Html.HiddenFor(x => x.MaTaiKhoan)
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-2" style="width: 100%;height: 80px;">
+                                        <div>
+                                            <label style="font-weight: 500;">Name</label> <br>
+                                            @Html.TextBoxFor(x => x.HoTen, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                    <div class="mb-2" style="width: 100%;height: 80px;">
+                                        <div>
+                                            <label style="font-weight: 500;">Mobie Number</label> <br>
+                                            @Html.TextBoxFor(x => x.SoDienThoai, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                    <div class="mb-2" style="width: 100%;height: 80px;">
+                                        <div>
+                                            <label style="font-weight: 500;">Service Type</label> <br>
+                                            @Html.TextBoxFor(x => x.TenDichVu, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div style="width: 100%; height: 300px;">
+                                        <div class="mb-2" style="width: 100%;height: 80px;">
+                                            <div>
+                                                <label style="font-weight: 500;">Address</label> <br>
+                                                @Html.TextBoxFor(x => x.DiaChi, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                            </div>
+                                        </div>
+                                        <div class="mb-2" style="width: 100%;height: 80px;">
+                                            <div>
+                                                <label style="font-weight: 500;">Email</label> <br>
+                                                @Html.TextBoxFor(x => x.Email, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                            </div>
+                                        </div>
+                                        <div class="mb-2" style="width: 100%;height: 80px;">
+                                            <div>
+                                                <label style="font-weight: 500;">Service Address</label> <br>
+                                                @Html.TextBoxFor(x => x.DiaChiDichVu, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-2" style="width: 100%;height: 80px;">
+                                        <div>
+                                            <label style="font-weight: 500;">Name Package</label> <br>
+                                            @Html.TextBoxFor(x => x.TenGoiTap, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-2" style="width: 100%;height: 80px;">
+                                        <div>
+                                            <label style="font-weight: 500;">Service Period</label> <br>
+                                            @Html.TextBoxFor(x => x.ThoiHanGoiTap, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-2" style="width: 100%;height: 80px;">
+                                        <div>
+                                            <label style="font-weight: 500;">Service Peer ($)</label> <br>
+                                            @Html.TextBoxFor(x => x.GiaGoiTap, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-2" style="width: 100%;height: 80px;">
+                                        <div>
+                                            <label style="font-weight: 500;">Registration Date</label> <br>
+                                            @Html.TextBoxFor(x => x.NgayDangKy, "{0:MM/dd/yyyy}", new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-2" style="width: 100%;height: 80px;">
+                                        <div>
+                                            <label style="font-weight: 500;">Coupon</label> <br>
+                                            @Html.TextBoxFor(x => x.Coupon, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-2" style="width: 100%;height: 80px;">
+                                        <div>
+                                            <label style="font-weight: 500;">Total Amount ($)<span style="color: red;">*</span></label> <br>
+                                            @Html.TextBoxFor(x => x.TotalAmount, new { style = "width: 100%; border-radius: 5px; border: 0.5px solid black;", @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-bottom: -15px; height: 40px; justify-content: space-around;">
+                                <span style="color: red;">@ViewBag.Success</span>
+                            </div>
+                            if (thethanhvien.TrangThai == false)
+                            {
+                                <div style="margin: 15px 25px; float: right;">
+                                    <input class="btn btn-success" style="width: 150px;" value="Pending">
+                                </div>
+                            }
+                            else if (thethanhvien.TrangThai == true)
+                            {
+                                <div style="margin: 15px 25px; float: right;">
+                                    <input class="btn btn-success" style="width: 150px;"value="Approved">
+                                </div>
+                            }
+                            else
+                            {
+                                <div style="margin: 15px 25px; float: right;">
+                                    <input class="btn btn-success" style="width: 150px;" type="submit" value="Confirm">
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

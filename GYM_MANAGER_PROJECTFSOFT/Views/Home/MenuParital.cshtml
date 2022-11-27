@@ -1,0 +1,56 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model IEnumerable<DICHVU>
+
+    <nav class="mainmenu mobile-menu">
+        <ul>
+            <li class="">@Html.ActionLink("Home", "Index", "Home")</li>
+            @foreach (var groupitem in Model.GroupBy(x => x.CLUB))
+            {
+                <li class="dropdown-service">
+                    <a class="dropdown-service-name" href="@Url.Action("DeviceMap", "Home")">@groupitem.Key.TenClub</a>
+                    <div class="dropdown-content-service">
+                        @foreach (var item in Model.Where(x => x.MaClub == groupitem.Key.MaClub))
+                        {
+                            <a class="dropdown-service-link" style="padding: 12px 16px;" href="@Url.Action("ServiceDetail", "Services", new {MaDichVu = item.MaDichVu})">@item.TenDichVu</a>
+                        }
+                    </div>
+                </li>
+            }
+            <li><a href="@Url.Action("BlogList", "Blog")">Blog</a></li>
+        </ul>
+    </nav>
+
+    <style>
+        .dropdown-service {
+            position: relative;
+            display: inline-block;
+        }
+
+            .dropdown-service .dropdown-service-name:hover {
+                color: white;
+            }
+
+        .dropdown-content-service {
+            position: absolute;
+            display: none;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content-service a {
+                display: block;
+                color: white;
+                padding: 12px 16px;
+                text-decoration: none;
+            }
+
+            .dropdown-content-service .dropdown-service-link:hover {
+                background-color: white;
+                color: black;
+            }
+
+        .dropdown-service:hover .dropdown-content-service {
+            display: block;
+        }
+    </style>

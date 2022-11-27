@@ -1,0 +1,79 @@
+﻿@model GYM_MANAGER_PROJECTFSOFT.Models.DICHVU
+
+@{
+    ViewBag.Title = "CreateService";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+
+<h2 class="text-center">Create new Dich vu</h2>
+
+@using (Html.BeginForm("CreateService", "ServiceManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">ServiecName</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenDichVu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenDichVu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">ClubName</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MaClub", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaClub, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Image 1</label>
+            <div class="col-md-10">
+                @*@Html.TextBox("file", "", new { type = "file", @style = "width: 100%;", @class = "vd_bg-blue" })*@
+                @Html.EditorFor(model => model.HinhAnh1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HinhAnh1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Image 2</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HinhAnh2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HinhAnh2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Image 2</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HinhAnh3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HinhAnh3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+            </div>
+        </div>
+    </div>
+}
+<style>
+    form {
+        padding: 25px;
+        margin: 25px;
+        box-shadow: 0 2px 5px #f5f5f5;
+        background: #f5f5f5;
+    }
+</style>
+
+<div>
+    <button type="button" class="btn btn-outline-info">@Html.ActionLink("Back to List", "ServiceTable")</button>
+</div>
+

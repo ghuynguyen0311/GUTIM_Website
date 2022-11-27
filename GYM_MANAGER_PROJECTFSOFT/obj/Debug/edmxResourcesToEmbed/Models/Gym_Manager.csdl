@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GYM_ManangerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BLOG">
+    <Key>
+      <PropertyRef Name="MaBlog" />
+    </Key>
+    <Property Name="MaBlog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaLoaiBlog" Type="Int32" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDang" Type="DateTime" Precision="0" />
+    <Property Name="TieuDe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LOAIBLOG" Relationship="Self.pk_MaLoaiBlog" FromRole="BLOG" ToRole="LOAIBLOG" />
+  </EntityType>
+  <EntityType Name="CLUB">
+    <Key>
+      <PropertyRef Name="MaClub" />
+    </Key>
+    <Property Name="MaClub" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenClub" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Gmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DICHVUs" Relationship="Self.pk_MaClub" FromRole="CLUB" ToRole="DICHVU" />
+  </EntityType>
+  <EntityType Name="DANGKYGOITAP">
+    <Key>
+      <PropertyRef Name="MaDangKyGoiTap" />
+    </Key>
+    <Property Name="MaDangKyGoiTap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayDangKi" Type="DateTime" Precision="0" />
+    <Property Name="GiaDangKi" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MaGoiTap" Type="Int32" />
+    <NavigationProperty Name="GOITAP" Relationship="Self.pk_DangKyGoiTap" FromRole="DANGKYGOITAP" ToRole="GOITAP" />
+    <NavigationProperty Name="THETHANHVIENs" Relationship="Self.pk_TheThanhVien1" FromRole="DANGKYGOITAP" ToRole="THETHANHVIEN" />
+  </EntityType>
+  <EntityType Name="DICHVU">
+    <Key>
+      <PropertyRef Name="MaDichVu" />
+    </Key>
+    <Property Name="MaDichVu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDichVu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MaClub" Type="Int32" />
+    <Property Name="HinhAnh1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CLUB" Relationship="Self.pk_MaClub" FromRole="DICHVU" ToRole="CLUB" />
+    <NavigationProperty Name="GOITAPs" Relationship="Self.pk_GoiTap" FromRole="DICHVU" ToRole="GOITAP" />
+    <NavigationProperty Name="Phongs" Relationship="Self.pk_Phong" FromRole="DICHVU" ToRole="Phong" />
+  </EntityType>
+  <EntityType Name="GIAMGIA">
+    <Key>
+      <PropertyRef Name="MaGiamGia" />
+    </Key>
+    <Property Name="MaGiamGia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaGoiTap" Type="Int32" />
+    <Property Name="CodeGiamGia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoTienGiamGia" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Soluong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GOITAP" Relationship="Self.pk_GiamGia" FromRole="GIAMGIA" ToRole="GOITAP" />
+  </EntityType>
+  <EntityType Name="GOITAP">
+    <Key>
+      <PropertyRef Name="MaGoiTap" />
+    </Key>
+    <Property Name="MaGoiTap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaDichVu" Type="Int32" />
+    <Property Name="TenGoiTap" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiHanGoiTap" Type="Int32" />
+    <Property Name="GiaGoiTap" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="DANGKYGOITAPs" Relationship="Self.pk_DangKyGoiTap" FromRole="GOITAP" ToRole="DANGKYGOITAP" />
+    <NavigationProperty Name="DICHVU" Relationship="Self.pk_GoiTap" FromRole="GOITAP" ToRole="DICHVU" />
+    <NavigationProperty Name="GIAMGIAs" Relationship="Self.pk_GiamGia" FromRole="GOITAP" ToRole="GIAMGIA" />
+  </EntityType>
+  <EntityType Name="KHOTHIETBI">
+    <Key>
+      <PropertyRef Name="MaThietBiTrongKho" />
+    </Key>
+    <Property Name="MaThietBiTrongKho" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaThietBi" Type="Int32" />
+    <Property Name="MaYeuCauNhap" Type="Int32" />
+    <Property Name="TrangThaiTonKho" Type="Boolean" />
+    <NavigationProperty Name="THIETBI" Relationship="Self.pk_khothietbi" FromRole="KHOTHIETBI" ToRole="THIETBI" />
+    <NavigationProperty Name="NHAPTHIETBI" Relationship="Self.pk_khothietbi1" FromRole="KHOTHIETBI" ToRole="NHAPTHIETBI" />
+  </EntityType>
+  <EntityType Name="LOAIBLOG">
+    <Key>
+      <PropertyRef Name="MaLoaiBlog" />
+    </Key>
+    <Property Name="MaLoaiBlog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiBlog" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BLOGs" Relationship="Self.pk_MaLoaiBlog" FromRole="LOAIBLOG" ToRole="BLOG" />
+  </EntityType>
+  <EntityType Name="LOAITHETHANHVIEN">
+    <Key>
+      <PropertyRef Name="MaLoaiTheThanhVien" />
+    </Key>
+    <Property Name="MaLoaiTheThanhVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UuDai" Type="Int32" />
+    <Property Name="HinhAnhThe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="THETHANHVIENs" Relationship="Self.pk_TheThanhVien2" FromRole="LOAITHETHANHVIEN" ToRole="THETHANHVIEN" />
+  </EntityType>
+  <EntityType Name="LOAITHIETBI">
+    <Key>
+      <PropertyRef Name="MaLoaiThietBi" />
+    </Key>
+    <Property Name="MaLoaiThietBi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiThietBi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHAPTHIETBIs" Relationship="Self.pk_nhapthietbi2" FromRole="LOAITHIETBI" ToRole="NHAPTHIETBI" />
+    <NavigationProperty Name="THIETBIs" Relationship="Self.pk_ThietBi2" FromRole="LOAITHIETBI" ToRole="THIETBI" />
+  </EntityType>
+  <EntityType Name="NHAPTHIETBI">
+    <Key>
+      <PropertyRef Name="MaYeuCauNhap" />
+    </Key>
+    <Property Name="MaYeuCauNhap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenThietBi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="HinhThietBi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayYeuCau" Type="DateTime" Precision="0" />
+    <Property Name="MaTaiKhoan" Type="Int32" />
+    <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MaLoaiThietBi" Type="Int32" />
+    <Property Name="TrangThaiNhapThietBi" Type="Boolean" />
+    <NavigationProperty Name="KHOTHIETBIs" Relationship="Self.pk_khothietbi1" FromRole="NHAPTHIETBI" ToRole="KHOTHIETBI" />
+    <NavigationProperty Name="LOAITHIETBI" Relationship="Self.pk_nhapthietbi2" FromRole="NHAPTHIETBI" ToRole="LOAITHIETBI" />
+    <NavigationProperty Name="TAIKHOAN" Relationship="Self.pk_nhapthietbi1" FromRole="NHAPTHIETBI" ToRole="TAIKHOAN" />
+  </EntityType>
+  <EntityType Name="Phong">
+    <Key>
+      <PropertyRef Name="MaPhong" />
+    </Key>
+    <Property Name="MaPhong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenPhong" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MaDichVu" Type="Int32" />
+    <NavigationProperty Name="DICHVU" Relationship="Self.pk_Phong" FromRole="Phong" ToRole="DICHVU" />
+    <NavigationProperty Name="THIETBIs" Relationship="Self.pk_ThietBi1" FromRole="Phong" ToRole="THIETBI" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="MaProfile" />
+    </Key>
+    <Property Name="MaProfile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaTaiKhoan" Type="Int32" />
+    <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="MaThanhVien" Type="Int32" />
+    <NavigationProperty Name="THANHVIEN" Relationship="Self.pk_profile" FromRole="Profile" ToRole="THANHVIEN" />
+    <NavigationProperty Name="TAIKHOAN" Relationship="Self.pk_profile3123123" FromRole="Profile" ToRole="TAIKHOAN" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="MaTaiKhoan" />
+    </Key>
+    <Property Name="MaTaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaiKhoan1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="Boolean" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHAPTHIETBIs" Relationship="Self.pk_nhapthietbi1" FromRole="TAIKHOAN" ToRole="NHAPTHIETBI" />
+    <NavigationProperty Name="Profiles" Relationship="Self.pk_profile3123123" FromRole="TAIKHOAN" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="THANHVIEN">
+    <Key>
+      <PropertyRef Name="MaThanhVien" />
+    </Key>
+    <Property Name="MaThanhVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaTheThanhVien" Type="Int32" />
+    <Property Name="NgayDangKi" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Profiles" Relationship="Self.pk_profile" FromRole="THANHVIEN" ToRole="Profile" />
+    <NavigationProperty Name="THETHANHVIEN" Relationship="Self.pk_ThanhVien" FromRole="THANHVIEN" ToRole="THETHANHVIEN" />
+  </EntityType>
+  <EntityType Name="THETHANHVIEN">
+    <Key>
+      <PropertyRef Name="MaTheThanhVien" />
+    </Key>
+    <Property Name="MaTheThanhVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenThe" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CodeThe" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MaDangKyGoiTap" Type="Int32" />
+    <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+    <Property Name="NgayHetHan" Type="DateTime" Precision="0" />
+    <Property Name="MaLoaiTheThanhVien" Type="Int32" />
+    <Property Name="TamNgung" Type="DateTime" Precision="0" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <NavigationProperty Name="DANGKYGOITAP" Relationship="Self.pk_TheThanhVien1" FromRole="THETHANHVIEN" ToRole="DANGKYGOITAP" />
+    <NavigationProperty Name="LOAITHETHANHVIEN" Relationship="Self.pk_TheThanhVien2" FromRole="THETHANHVIEN" ToRole="LOAITHETHANHVIEN" />
+    <NavigationProperty Name="THANHVIENs" Relationship="Self.pk_ThanhVien" FromRole="THETHANHVIEN" ToRole="THANHVIEN" />
+  </EntityType>
+  <EntityType Name="THIETBI">
+    <Key>
+      <PropertyRef Name="MaThietBi" />
+    </Key>
+    <Property Name="MaThietBi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenThietBi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MaPhong" Type="Int32" />
+    <Property Name="MaLoaiThietBi" Type="Int32" />
+    <Property Name="NgayNhapThietBi" Type="DateTime" Precision="0" />
+    <Property Name="TrangThaiThietBi" Type="Boolean" />
+    <Property Name="HinhThietBi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KHOTHIETBIs" Relationship="Self.pk_khothietbi" FromRole="THIETBI" ToRole="KHOTHIETBI" />
+    <NavigationProperty Name="LOAITHIETBI" Relationship="Self.pk_ThietBi2" FromRole="THIETBI" ToRole="LOAITHIETBI" />
+    <NavigationProperty Name="Phong" Relationship="Self.pk_ThietBi1" FromRole="THIETBI" ToRole="Phong" />
+  </EntityType>
+  <Association Name="pk_MaLoaiBlog">
+    <End Role="LOAIBLOG" Type="Self.LOAIBLOG" Multiplicity="0..1" />
+    <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIBLOG">
+        <PropertyRef Name="MaLoaiBlog" />
+      </Principal>
+      <Dependent Role="BLOG">
+        <PropertyRef Name="MaLoaiBlog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_MaClub">
+    <End Role="CLUB" Type="Self.CLUB" Multiplicity="0..1" />
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLUB">
+        <PropertyRef Name="MaClub" />
+      </Principal>
+      <Dependent Role="DICHVU">
+        <PropertyRef Name="MaClub" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_DangKyGoiTap">
+    <End Role="GOITAP" Type="Self.GOITAP" Multiplicity="0..1" />
+    <End Role="DANGKYGOITAP" Type="Self.DANGKYGOITAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GOITAP">
+        <PropertyRef Name="MaGoiTap" />
+      </Principal>
+      <Dependent Role="DANGKYGOITAP">
+        <PropertyRef Name="MaGoiTap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_TheThanhVien1">
+    <End Role="DANGKYGOITAP" Type="Self.DANGKYGOITAP" Multiplicity="0..1" />
+    <End Role="THETHANHVIEN" Type="Self.THETHANHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DANGKYGOITAP">
+        <PropertyRef Name="MaDangKyGoiTap" />
+      </Principal>
+      <Dependent Role="THETHANHVIEN">
+        <PropertyRef Name="MaDangKyGoiTap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_GoiTap">
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
+    <End Role="GOITAP" Type="Self.GOITAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="MaDichVu" />
+      </Principal>
+      <Dependent Role="GOITAP">
+        <PropertyRef Name="MaDichVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_Phong">
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
+    <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="MaDichVu" />
+      </Principal>
+      <Dependent Role="Phong">
+        <PropertyRef Name="MaDichVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_GiamGia">
+    <End Role="GOITAP" Type="Self.GOITAP" Multiplicity="0..1" />
+    <End Role="GIAMGIA" Type="Self.GIAMGIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GOITAP">
+        <PropertyRef Name="MaGoiTap" />
+      </Principal>
+      <Dependent Role="GIAMGIA">
+        <PropertyRef Name="MaGoiTap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_khothietbi">
+    <End Role="THIETBI" Type="Self.THIETBI" Multiplicity="0..1" />
+    <End Role="KHOTHIETBI" Type="Self.KHOTHIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THIETBI">
+        <PropertyRef Name="MaThietBi" />
+      </Principal>
+      <Dependent Role="KHOTHIETBI">
+        <PropertyRef Name="MaThietBi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_khothietbi1">
+    <End Role="NHAPTHIETBI" Type="Self.NHAPTHIETBI" Multiplicity="0..1" />
+    <End Role="KHOTHIETBI" Type="Self.KHOTHIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHAPTHIETBI">
+        <PropertyRef Name="MaYeuCauNhap" />
+      </Principal>
+      <Dependent Role="KHOTHIETBI">
+        <PropertyRef Name="MaYeuCauNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_TheThanhVien2">
+    <End Role="LOAITHETHANHVIEN" Type="Self.LOAITHETHANHVIEN" Multiplicity="0..1" />
+    <End Role="THETHANHVIEN" Type="Self.THETHANHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAITHETHANHVIEN">
+        <PropertyRef Name="MaLoaiTheThanhVien" />
+      </Principal>
+      <Dependent Role="THETHANHVIEN">
+        <PropertyRef Name="MaLoaiTheThanhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_nhapthietbi2">
+    <End Role="LOAITHIETBI" Type="Self.LOAITHIETBI" Multiplicity="0..1" />
+    <End Role="NHAPTHIETBI" Type="Self.NHAPTHIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAITHIETBI">
+        <PropertyRef Name="MaLoaiThietBi" />
+      </Principal>
+      <Dependent Role="NHAPTHIETBI">
+        <PropertyRef Name="MaLoaiThietBi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_ThietBi2">
+    <End Role="LOAITHIETBI" Type="Self.LOAITHIETBI" Multiplicity="0..1" />
+    <End Role="THIETBI" Type="Self.THIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAITHIETBI">
+        <PropertyRef Name="MaLoaiThietBi" />
+      </Principal>
+      <Dependent Role="THIETBI">
+        <PropertyRef Name="MaLoaiThietBi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_nhapthietbi1">
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="0..1" />
+    <End Role="NHAPTHIETBI" Type="Self.NHAPTHIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOAN">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Principal>
+      <Dependent Role="NHAPTHIETBI">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_ThietBi1">
+    <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
+    <End Role="THIETBI" Type="Self.THIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phong">
+        <PropertyRef Name="MaPhong" />
+      </Principal>
+      <Dependent Role="THIETBI">
+        <PropertyRef Name="MaPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_profile">
+    <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="0..1" />
+    <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="MaThanhVien" />
+      </Principal>
+      <Dependent Role="Profile">
+        <PropertyRef Name="MaThanhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_profile3123123">
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="0..1" />
+    <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOAN">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Principal>
+      <Dependent Role="Profile">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_ThanhVien">
+    <End Role="THETHANHVIEN" Type="Self.THETHANHVIEN" Multiplicity="0..1" />
+    <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THETHANHVIEN">
+        <PropertyRef Name="MaTheThanhVien" />
+      </Principal>
+      <Dependent Role="THANHVIEN">
+        <PropertyRef Name="MaTheThanhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GYM_ManangerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BLOGs" EntityType="Self.BLOG" />
+    <EntitySet Name="CLUBs" EntityType="Self.CLUB" />
+    <EntitySet Name="DANGKYGOITAPs" EntityType="Self.DANGKYGOITAP" />
+    <EntitySet Name="DICHVUs" EntityType="Self.DICHVU" />
+    <EntitySet Name="GIAMGIAs" EntityType="Self.GIAMGIA" />
+    <EntitySet Name="GOITAPs" EntityType="Self.GOITAP" />
+    <EntitySet Name="KHOTHIETBIs" EntityType="Self.KHOTHIETBI" />
+    <EntitySet Name="LOAIBLOGs" EntityType="Self.LOAIBLOG" />
+    <EntitySet Name="LOAITHETHANHVIENs" EntityType="Self.LOAITHETHANHVIEN" />
+    <EntitySet Name="LOAITHIETBIs" EntityType="Self.LOAITHIETBI" />
+    <EntitySet Name="NHAPTHIETBIs" EntityType="Self.NHAPTHIETBI" />
+    <EntitySet Name="Phongs" EntityType="Self.Phong" />
+    <EntitySet Name="Profiles" EntityType="Self.Profile" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+    <EntitySet Name="THANHVIENs" EntityType="Self.THANHVIEN" />
+    <EntitySet Name="THETHANHVIENs" EntityType="Self.THETHANHVIEN" />
+    <EntitySet Name="THIETBIs" EntityType="Self.THIETBI" />
+    <AssociationSet Name="pk_MaLoaiBlog" Association="Self.pk_MaLoaiBlog">
+      <End Role="LOAIBLOG" EntitySet="LOAIBLOGs" />
+      <End Role="BLOG" EntitySet="BLOGs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_MaClub" Association="Self.pk_MaClub">
+      <End Role="CLUB" EntitySet="CLUBs" />
+      <End Role="DICHVU" EntitySet="DICHVUs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_DangKyGoiTap" Association="Self.pk_DangKyGoiTap">
+      <End Role="GOITAP" EntitySet="GOITAPs" />
+      <End Role="DANGKYGOITAP" EntitySet="DANGKYGOITAPs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_TheThanhVien1" Association="Self.pk_TheThanhVien1">
+      <End Role="DANGKYGOITAP" EntitySet="DANGKYGOITAPs" />
+      <End Role="THETHANHVIEN" EntitySet="THETHANHVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_GoiTap" Association="Self.pk_GoiTap">
+      <End Role="DICHVU" EntitySet="DICHVUs" />
+      <End Role="GOITAP" EntitySet="GOITAPs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_Phong" Association="Self.pk_Phong">
+      <End Role="DICHVU" EntitySet="DICHVUs" />
+      <End Role="Phong" EntitySet="Phongs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_GiamGia" Association="Self.pk_GiamGia">
+      <End Role="GOITAP" EntitySet="GOITAPs" />
+      <End Role="GIAMGIA" EntitySet="GIAMGIAs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_khothietbi" Association="Self.pk_khothietbi">
+      <End Role="THIETBI" EntitySet="THIETBIs" />
+      <End Role="KHOTHIETBI" EntitySet="KHOTHIETBIs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_khothietbi1" Association="Self.pk_khothietbi1">
+      <End Role="NHAPTHIETBI" EntitySet="NHAPTHIETBIs" />
+      <End Role="KHOTHIETBI" EntitySet="KHOTHIETBIs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_TheThanhVien2" Association="Self.pk_TheThanhVien2">
+      <End Role="LOAITHETHANHVIEN" EntitySet="LOAITHETHANHVIENs" />
+      <End Role="THETHANHVIEN" EntitySet="THETHANHVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_nhapthietbi2" Association="Self.pk_nhapthietbi2">
+      <End Role="LOAITHIETBI" EntitySet="LOAITHIETBIs" />
+      <End Role="NHAPTHIETBI" EntitySet="NHAPTHIETBIs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_ThietBi2" Association="Self.pk_ThietBi2">
+      <End Role="LOAITHIETBI" EntitySet="LOAITHIETBIs" />
+      <End Role="THIETBI" EntitySet="THIETBIs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_nhapthietbi1" Association="Self.pk_nhapthietbi1">
+      <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+      <End Role="NHAPTHIETBI" EntitySet="NHAPTHIETBIs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_ThietBi1" Association="Self.pk_ThietBi1">
+      <End Role="Phong" EntitySet="Phongs" />
+      <End Role="THIETBI" EntitySet="THIETBIs" />
+    </AssociationSet>
+    <AssociationSet Name="pk_profile" Association="Self.pk_profile">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="Profile" EntitySet="Profiles" />
+    </AssociationSet>
+    <AssociationSet Name="pk_profile3123123" Association="Self.pk_profile3123123">
+      <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+      <End Role="Profile" EntitySet="Profiles" />
+    </AssociationSet>
+    <AssociationSet Name="pk_ThanhVien" Association="Self.pk_ThanhVien">
+      <End Role="THETHANHVIEN" EntitySet="THETHANHVIENs" />
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6377a07b64124bdb9b1841de5afa6782" Name="Diagram1">
+        <EntityTypeShape EntityType="GYM_ManangerModel.BLOG" Width="1.5" PointX="13" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.CLUB" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.DANGKYGOITAP" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.DICHVU" Width="1.5" PointX="1.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.GIAMGIA" Width="1.5" PointX="6" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.GOITAP" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.KHOTHIETBI" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.LOAIBLOG" Width="1.5" PointX="10.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.LOAITHETHANHVIEN" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.LOAITHIETBI" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.NHAPTHIETBI" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.Phong" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.Profile" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.sysdiagram" Width="1.5" PointX="8.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.TAIKHOAN" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.THANHVIEN" Width="1.5" PointX="10.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.THETHANHVIEN" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYM_ManangerModel.THIETBI" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_MaLoaiBlog" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_MaClub" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_DangKyGoiTap" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_TheThanhVien1" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_GoiTap" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_Phong" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_GiamGia" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_khothietbi" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_khothietbi1" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_TheThanhVien2" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_nhapthietbi2" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_ThietBi2" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_nhapthietbi1" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_ThietBi1" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_profile" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_profile3123123" ManuallyRouted="false" />
+        <AssociationConnector Association="GYM_ManangerModel.pk_ThanhVien" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

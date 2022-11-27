@@ -1,0 +1,229 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+
+
+<header class="header-section" style="padding-top: 0;">
+    <div class="container">
+        <div class="logo">
+            <a href="@Url.Action("Index", "Home")">
+                <img src="~/Content/img/logo.png" alt="">
+            </a>
+        </div>
+        <div class="nav-menu">
+
+            @Html.Action("MenuParital", "Home")
+
+            @if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
+            {
+                TAIKHOAN tv = (TAIKHOAN)Session["TaiKhoan"];
+                <div class="dropdown">
+                    <a href="@Url.Action("Logout", "Home")" class="primary-btn signup-btn dropbtn">Sign out</a>
+                    <div class="dropdown-content">
+                        @if (Convert.ToInt32(Session["Role"]) == 1)
+                        {
+                            <a href="@Url.Action("StatisticalIndex", "Statistical", new {MaTaiKhoan = tv.MaTaiKhoan})">Admin Managerment</a>
+                        }
+                        <a href="#">@tv.TaiKhoan1</a>
+                        <a href="@Url.Action("ProfileUser", "User", new { MaTaiKhoan = tv.MaTaiKhoan })">My Profile</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <a class="primary-btn signup-btn" id="btnSignUp" style="color: white;">Sign up ToDay</a>
+            }
+        </div>
+    </div>
+</header>
+
+<div class="hero-section set-bg" data-setbg="../Content/img/hero-bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="hero-text">
+                    <span>FITNESS ELEMENTS</span>
+                    <h1 style="color: #f15d44;">COME TO GuTim TO<br /> BECOME TO FITNESS</h1>
+                    <p style="color: #f15d44;">Lift heavy today if you want<br /> strength tomorrow.</p>
+                    <a href="#" class="primary-btn">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*=======================LOGIN FORM=========================*@
+<div>
+    <div id="popup-login">
+        <div class="-login">
+            <div style="clear:both;text-align:right;margin-bottom:0;">
+                <span id="btnClose" class="btn btn-danger" style="background: linear-gradient(to right, #eb3c5a, #f67831);">X</span>
+            </div>
+            <h2>Login Now</h2>
+            <p style="border: 1px solid #f15d44; "></p>
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                <div class="form-group" style="margin: 20px 0;">
+                    <label>Username:</label>
+                    <div class="group">
+                        <i class="fa-solid fa-user" style="margin-top: 10px; color: #f15d44; padding: 0 10px; font-size: 20px;"></i>
+                        <input type="text" class="form-control" placeholder="Your Account" required name="txtUsername">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <div class="group">
+                        <i class="fa-solid fa-key" style="margin-top: 10px; color: #f15d44; padding: 0 10px; font-size: 20px;"></i>
+                        <input type="password" class="form-control" placeholder="Password" required name="txtPassword">
+                    </div>
+                </div>
+                <button type="submit">Login</button>
+
+                <p style="color:red">@ViewBag.MesageLogin</p>
+            }
+            <p class="register">Don't have an account?<a href="@Url.Action("Registration", "Home")" class="register" style="font-size: 20px; color: #f15d44;"> Register</a></p>
+        </div>
+    </div>
+</div>
+
+@*===================================STYLE LOGIN FORM BEGIN===================================*@
+<style>
+    #popup-login {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+        position: fixed;
+        display: none;
+    }
+
+    h2 {
+        margin: 0;
+        color: #f15d44;
+        font-size: 25px;
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: 1px;
+        padding-bottom: 30px;
+    }
+
+    p .register {
+        color: #eee;
+        font-size: 13px;
+        text-align: center;
+        margin-top: 2em;
+    }
+
+    .-login {
+        background: rgba(0, 0, 0, 0.8);
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 3em;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+
+    .group {
+        display: flex;
+        padding: 15px 5px;
+        /* background-color: #ffffff; */
+    }
+
+    .form-group label {
+        display: block;
+        text-transform: uppercase;
+        font-size: 13px;
+        color: #d2d2d2;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+
+
+    button {
+        background: linear-gradient(to right, #eb3c5a, #f67831);
+        color: #ffffff;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        padding: 12px 60px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 6px;
+    }
+
+        button:hover {
+            background-color: #00BCD4;
+            transition-duration: 5s;
+        }
+
+
+    a {
+        color: #eee;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .register {
+        margin-top: 5px;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+@*===================================STYLE LOGIN FORM END===================================*@
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+    $("#btnSignUp").click(function () {
+        $("#popup-login").show();
+    })
+
+    $("#btnClose").click(function () {
+        $("#popup-login").hide();
+    })
+</script>
+
+
+@*===================================STYLE MENU BEGIN===================================*@
+<style>
+
+    .dropbtn {
+        display: inline-block;
+        margin: 16px 0px 16px 30px;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        /*background-color: #f1f1f1;*/
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: white;
+                color: black;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+@*===================================STYLE MENU END===================================*@
+

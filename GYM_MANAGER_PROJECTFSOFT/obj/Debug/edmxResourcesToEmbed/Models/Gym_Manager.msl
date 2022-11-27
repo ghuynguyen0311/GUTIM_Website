@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GYM_ManangerModelStoreContainer" CdmEntityContainer="GYM_ManangerEntities">
+    <EntitySetMapping Name="BLOGs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.BLOG">
+        <MappingFragment StoreEntitySet="BLOG">
+          <ScalarProperty Name="MaBlog" ColumnName="MaBlog" />
+          <ScalarProperty Name="MaLoaiBlog" ColumnName="MaLoaiBlog" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLUBs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.CLUB">
+        <MappingFragment StoreEntitySet="CLUB">
+          <ScalarProperty Name="MaClub" ColumnName="MaClub" />
+          <ScalarProperty Name="TenClub" ColumnName="TenClub" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="Gmail" ColumnName="Gmail" />
+          <ScalarProperty Name="HinhAnh1" ColumnName="HinhAnh1" />
+          <ScalarProperty Name="HinhAnh2" ColumnName="HinhAnh2" />
+          <ScalarProperty Name="HinhAnh3" ColumnName="HinhAnh3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DANGKYGOITAPs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.DANGKYGOITAP">
+        <MappingFragment StoreEntitySet="DANGKYGOITAP">
+          <ScalarProperty Name="MaDangKyGoiTap" ColumnName="MaDangKyGoiTap" />
+          <ScalarProperty Name="NgayDangKi" ColumnName="NgayDangKi" />
+          <ScalarProperty Name="GiaDangKi" ColumnName="GiaDangKi" />
+          <ScalarProperty Name="MaGoiTap" ColumnName="MaGoiTap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DICHVUs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.DICHVU">
+        <MappingFragment StoreEntitySet="DICHVU">
+          <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
+          <ScalarProperty Name="TenDichVu" ColumnName="TenDichVu" />
+          <ScalarProperty Name="MaClub" ColumnName="MaClub" />
+          <ScalarProperty Name="HinhAnh1" ColumnName="HinhAnh1" />
+          <ScalarProperty Name="HinhAnh2" ColumnName="HinhAnh2" />
+          <ScalarProperty Name="HinhAnh3" ColumnName="HinhAnh3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GIAMGIAs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.GIAMGIA">
+        <MappingFragment StoreEntitySet="GIAMGIA">
+          <ScalarProperty Name="MaGiamGia" ColumnName="MaGiamGia" />
+          <ScalarProperty Name="MaGoiTap" ColumnName="MaGoiTap" />
+          <ScalarProperty Name="CodeGiamGia" ColumnName="CodeGiamGia" />
+          <ScalarProperty Name="SoTienGiamGia" ColumnName="SoTienGiamGia" />
+          <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GOITAPs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.GOITAP">
+        <MappingFragment StoreEntitySet="GOITAP">
+          <ScalarProperty Name="MaGoiTap" ColumnName="MaGoiTap" />
+          <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
+          <ScalarProperty Name="TenGoiTap" ColumnName="TenGoiTap" />
+          <ScalarProperty Name="ThoiHanGoiTap" ColumnName="ThoiHanGoiTap" />
+          <ScalarProperty Name="GiaGoiTap" ColumnName="GiaGoiTap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHOTHIETBIs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.KHOTHIETBI">
+        <MappingFragment StoreEntitySet="KHOTHIETBI">
+          <ScalarProperty Name="MaThietBiTrongKho" ColumnName="MaThietBiTrongKho" />
+          <ScalarProperty Name="MaThietBi" ColumnName="MaThietBi" />
+          <ScalarProperty Name="MaYeuCauNhap" ColumnName="MaYeuCauNhap" />
+          <ScalarProperty Name="TrangThaiTonKho" ColumnName="TrangThaiTonKho" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIBLOGs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.LOAIBLOG">
+        <MappingFragment StoreEntitySet="LOAIBLOG">
+          <ScalarProperty Name="MaLoaiBlog" ColumnName="MaLoaiBlog" />
+          <ScalarProperty Name="TenLoaiBlog" ColumnName="TenLoaiBlog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAITHETHANHVIENs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.LOAITHETHANHVIEN">
+        <MappingFragment StoreEntitySet="LOAITHETHANHVIEN">
+          <ScalarProperty Name="MaLoaiTheThanhVien" ColumnName="MaLoaiTheThanhVien" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+          <ScalarProperty Name="UuDai" ColumnName="UuDai" />
+          <ScalarProperty Name="HinhAnhThe" ColumnName="HinhAnhThe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAITHIETBIs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.LOAITHIETBI">
+        <MappingFragment StoreEntitySet="LOAITHIETBI">
+          <ScalarProperty Name="MaLoaiThietBi" ColumnName="MaLoaiThietBi" />
+          <ScalarProperty Name="TenLoaiThietBi" ColumnName="TenLoaiThietBi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHAPTHIETBIs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.NHAPTHIETBI">
+        <MappingFragment StoreEntitySet="NHAPTHIETBI">
+          <ScalarProperty Name="MaYeuCauNhap" ColumnName="MaYeuCauNhap" />
+          <ScalarProperty Name="TenThietBi" ColumnName="TenThietBi" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="HinhThietBi" ColumnName="HinhThietBi" />
+          <ScalarProperty Name="NgayYeuCau" ColumnName="NgayYeuCau" />
+          <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="MaLoaiThietBi" ColumnName="MaLoaiThietBi" />
+          <ScalarProperty Name="TrangThaiNhapThietBi" ColumnName="TrangThaiNhapThietBi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phongs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.Phong">
+        <MappingFragment StoreEntitySet="Phong">
+          <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+          <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
+          <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="MaProfile" ColumnName="MaProfile" />
+          <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="MaThanhVien" ColumnName="MaThanhVien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAIKHOANs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.TAIKHOAN">
+        <MappingFragment StoreEntitySet="TAIKHOAN">
+          <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+          <ScalarProperty Name="TaiKhoan1" ColumnName="TaiKhoan" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHVIENs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.THANHVIEN">
+        <MappingFragment StoreEntitySet="THANHVIEN">
+          <ScalarProperty Name="MaThanhVien" ColumnName="MaThanhVien" />
+          <ScalarProperty Name="MaTheThanhVien" ColumnName="MaTheThanhVien" />
+          <ScalarProperty Name="NgayDangKi" ColumnName="NgayDangKi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THETHANHVIENs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.THETHANHVIEN">
+        <MappingFragment StoreEntitySet="THETHANHVIEN">
+          <ScalarProperty Name="MaTheThanhVien" ColumnName="MaTheThanhVien" />
+          <ScalarProperty Name="TenThe" ColumnName="TenThe" />
+          <ScalarProperty Name="CodeThe" ColumnName="CodeThe" />
+          <ScalarProperty Name="MaDangKyGoiTap" ColumnName="MaDangKyGoiTap" />
+          <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+          <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
+          <ScalarProperty Name="MaLoaiTheThanhVien" ColumnName="MaLoaiTheThanhVien" />
+          <ScalarProperty Name="TamNgung" ColumnName="TamNgung" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THIETBIs">
+      <EntityTypeMapping TypeName="GYM_ManangerModel.THIETBI">
+        <MappingFragment StoreEntitySet="THIETBI">
+          <ScalarProperty Name="MaThietBi" ColumnName="MaThietBi" />
+          <ScalarProperty Name="TenThietBi" ColumnName="TenThietBi" />
+          <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+          <ScalarProperty Name="MaLoaiThietBi" ColumnName="MaLoaiThietBi" />
+          <ScalarProperty Name="NgayNhapThietBi" ColumnName="NgayNhapThietBi" />
+          <ScalarProperty Name="TrangThaiThietBi" ColumnName="TrangThaiThietBi" />
+          <ScalarProperty Name="HinhThietBi" ColumnName="HinhThietBi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

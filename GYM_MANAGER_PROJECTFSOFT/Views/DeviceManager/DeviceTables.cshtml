@@ -1,0 +1,100 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<GYM_MANAGER_PROJECTFSOFT.Models.THIETBI>
+
+
+@{
+    ViewBag.Title = "DeviceTables";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Device List</h2>
+
+@*<p class="text-right">
+    <button type="button" class="btn btn-outline-primary">@Html.ActionLink("Create New (chưa làm)", "CreateDevice")</button>
+</p>*@
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" class="btn btn-outline-info" />
+    </p>
+}
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+</style>
+<table class="table">
+    <thead style="background-color: #446ad7;">
+        <tr style="color: white;">
+            <th>
+                <p class="text-center">DeviceCode</p>
+            </th>
+            <th>
+                <p class="text-center">DeviceName</p>
+            </th>
+            <th>
+                <p class="text-center">ImportDate</p>
+            </th>
+            <th>
+                <p class="text-center">DeviceStatus</p>
+            </th>
+            <th>
+                <p class="text-center">DeviceImage</p>
+            </th>
+            <th>
+                <p class="text-center">DeviceCategory</p>
+            </th>
+            <th>
+                <p class="text-center">RoomName</p>
+            </th>
+            <th>
+                <p class="text-center">Action</p>
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.MaThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.TenThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center">@item.NgayNhapThietBi.Value.ToString("MM/dd/yyyy")</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.TrangThaiThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center"><img src="@Url.Content("~/Content/ImagesGym/" + item.HinhThietBi)" alt="" style="width: 200px; height: 150px"></p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.LOAITHIETBI.TenLoaiThietBi)</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.Phong.TenPhong)</p>
+            </td>
+            <td style="text-align: center;">
+                <a class="btn btn-outline-success" href="@Url.Action("EditDevice", "DeviceManager", new {id = item.MaThietBi})">Edit</a>
+                <a class="btn btn-outline-danger" href="@Url.Action("DeleteDevice", "DeviceManager", new {id = item.MaThietBi})">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p class="text-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+<div class="nav justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("DeviceTables", new { page = page }))
+</div>

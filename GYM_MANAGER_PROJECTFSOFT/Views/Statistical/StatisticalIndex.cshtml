@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "StatisticalIndex";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2>StatisticalIndex</h2>
+
+<div class="row">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-upperc   ase mb-1" style="font-size: 20px;">
+                            MEMBERS
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.CountMember</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="font-size: 20px;">
+                            EARNINGS
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$@ViewBag.RevenueStatistics  /  @ViewBag.TranslateVND VND</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="font-size: 20px;">
+                            VISIT
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.PageView</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fa-solid fa-eye text-gray-300" style="font-size: 30px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style="font-size: 20px;">
+                            PENDING REQUESTS
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.PendingRequest</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p class="text-left">
+    <a class="btn btn-outline-primary" href="@Url.Action("ExportExcelList", "Statistical")">View Daily Income Detail</a>
+</p>
+
+@*========================DIV CHART=======================*@
+<div class="row">
+    <div class="col-md-12">
+        <canvas id="myAreaChart" style="display: block; width: 902px; height: 320px;" width="902" height="320" class="chartjs-render-monitor"></canvas>
+    </div>
+</div>
+

@@ -1,0 +1,75 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model ProfileDetail
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+<h2 class="text-center">Edit Status Device In Stock</h2>
+
+
+<h2 style="text-align:center">ListUser</h2>
+<table class="table">
+    <thead style="background-color: #446ad7;">
+        <tr style="color: white;">
+            <th scope="col">MaTaiKhoan</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">TaiKhoan</th>
+            <th scope="col">Email</th>
+            <th scope="col">SoDienThoai</th>
+            <th scope="col">HoTen</th>
+            <th scope="col">DiaChi</th>
+            <th scope="col">NgaySinh</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @using (Html.BeginForm("Edit", "UserManager", FormMethod.Post))
+        {
+            @Html.HiddenFor(model => model.MaTaiKhoan)
+            <tr>
+                <td>@Model.MaTaiKhoan</td>
+                <td style="width: 15%;">
+                    <div style="width: 100%; overflow: hidden;">
+                        @if (Model.Avatar != null)
+                        {
+                            <img style="width: 100%; height: 250px;" src="@Url.Content("../Content/ImagesGym/" + Model.Avatar)" alt="null" />
+
+                        }
+                        else
+                        {
+                            <img style="width: 100%; height: 250px;" src="@Url.Content("../Content/ImagesGym/Avatar_Null.png")" />
+                        }
+                    </div>
+                </td>
+                <td>@Model.TaiKhoan</td>
+                <td>@Model.Email</td>
+                <td>@Model.SoDienThoai</td>
+                <td>@Model.HoTen</td>
+                <td>@Model.DiaChi</td>
+                @if (Model.NgaySinh != null)
+                {
+                    <td>@Model.NgaySinh.Value.ToString("MM/dd/yyyy")</td>
+                }
+                else
+                {
+                    <td>@Model.NgaySinh</td>
+                }
+                <td>
+                    @Html.EditorFor(model => model.Role, new { @class = "form-control" })
+                </td>
+                <td>
+                    @*<a class="btn btn-outline-success" href="@Url.Action("Edit", "UserManager", new {MaTaiKhoan = Model.MaTaiKhoan})">Edit</a>*@
+                    <input type="submit" class="btn btn-outline-success" value="Edit"/>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<div>
+    <button type="button" class="btn btn-outline-info">@Html.ActionLink("Back to List", "ListUser")</button>
+</div>

@@ -1,0 +1,106 @@
+﻿
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index", "Home")">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Page To User Page</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="@Url.Action("StatisticalIndex", "Statistical")">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Managerment
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1"
+           aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>User Managerment</span>
+        </a>
+        <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="@Url.Action("ListUser", "UserManager")">User List</a>
+                <a class="collapse-item" href="@Url.Action("BrowseRegPackage", "BrowseRegPackageManager")">Package Register List</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+           aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Club Managerment</span>
+        </a>
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Club:</h6>
+                <a class="collapse-item" href="@Url.Action("ClubTables", "ClubManager")">Club Manager</a>
+                <h6 class="collapse-header">Service:</h6>
+                <a class="collapse-item" href="@Url.Action("ServiceTable", "ServiceManager")">Service Manager</a>
+                <a class="collapse-item" href="@Url.Action("PackageTable", "PackageAndCouponManager")">Package Manager</a>
+                <a class="collapse-item" href="@Url.Action("CouponList", "PackageAndCouponManager")">Coupon Manager</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3"
+           aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Device Managerment</span>
+        </a>
+        <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Using Device:</h6>
+                <a class="collapse-item" href="@Url.Action("DeviceTables", "DeviceManager")">Device List</a>
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Device in Stock:</h6>
+                <a class="collapse-item" href="@Url.Action("DeviceListInStock", "StockManager")">Import List In Stock</a>
+                <a class="collapse-item" href="@Url.Action("RoomDeviceInStock", "StockManager")">Room Device In Stock</a>
+                <h6 class="collapse-header">Import Device List:</h6>
+                <a class="collapse-item" href="@Url.Action("ImportDeviceTable", "ImportDeviceManager")">Import List</a>
+                <a class="collapse-item" href="@Url.Action("CreateImportDevice", "ImportDeviceManager")">Create Import Device</a>
+            </div>
+        </div>
+    </li>
+
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4"
+           aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Blog Managerment</span>
+        </a>
+        <div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="@Url.Action("BlogList", "BlogManager")">Blog List</a>
+                <a class="collapse-item" href="@Url.Action("AddBlog", "BlogManager")">Add Blog</a>
+            </div>
+        </div>
+    </li>
+
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+
+
+</ul>

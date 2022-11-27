@@ -1,0 +1,89 @@
+﻿@model GYM_MANAGER_PROJECTFSOFT.Models.THIETBI
+
+@{
+    ViewBag.Title = "EditDevice";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Edit Thiet bi</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>THIETBI</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaThietBi)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">DeviceName</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenThietBi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenThietBi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">RoomName</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MaPhong", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaPhong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">DeviceCategory</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MaLoaiThietBi", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaLoaiThietBi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">ImportDate</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayNhapThietBi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayNhapThietBi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">DeviceStatus</label>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TrangThaiThietBi)
+                    @Html.ValidationMessageFor(model => model.TrangThaiThietBi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">DeviceImage</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HinhThietBi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HinhThietBi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-outline-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    form {
+        padding: 25px;
+        margin: 25px;
+        box-shadow: 0 2px 5px #f5f5f5;
+        background: #f5f5f5;
+    }
+</style>
+
+<div>
+    <button type="button" class="btn btn-outline-info">@Html.ActionLink("Back to List", "DeviceTables")</button>
+</div>
+

@@ -1,0 +1,35 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model IEnumerable<BLOG>
+
+@{
+    ViewBag.Title = "BlogList";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<h1 style="text-align: center; font-weight: 700; margin-top: revert; color: #ff00009c;"> BLOG </h1>
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog-item">
+                        <img src="@Url.Content("~/Content/img/blog/" + item.HinhAnh)" alt="">
+                        <div class="blog-widget">
+                            <div class="bw-date">@item.NgayDang.Value.ToString("MM/dd/yyyy")</div>
+
+                        </div>
+                        <h4><a href="@Url.Action("BlogDetail", "Blog", new {Mablog =item.MaBlog})">@item.TieuDe</a></h4>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+

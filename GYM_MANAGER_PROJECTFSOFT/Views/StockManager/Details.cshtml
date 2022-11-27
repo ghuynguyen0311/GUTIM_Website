@@ -1,0 +1,49 @@
+﻿@model GYM_MANAGER_PROJECTFSOFT.Models.KHOTHIETBI
+
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>KHOTHIETBI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThaiTonKho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThaiTonKho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THIETBI.TenThietBi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THIETBI.TenThietBi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHAPTHIETBI.TenThietBi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHAPTHIETBI.TenThietBi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaThietBiTrongKho }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+
+

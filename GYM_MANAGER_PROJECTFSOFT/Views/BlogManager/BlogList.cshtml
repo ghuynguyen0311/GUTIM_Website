@@ -1,0 +1,62 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model IEnumerable<BLOG>
+
+
+@{
+    ViewBag.Title = "BlogList";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 class="text-center" style="font-weight: bold; font-size: 50px;">Blog List</h2>
+
+
+<table class="table">
+    <thead style="background-color: #446ad7;">
+        <tr style="color: white;">
+            <th>
+                <p class="text-center">BlogCode</p>
+            </th>
+            <th>
+                <p class="text-center">BlogImage</p>
+            </th>
+            <th>
+                <p class="text-center">Content</p>
+            </th>
+            <th>
+                <p class="text-center">PostDate</p>
+            </th>
+            <th>
+                <p class="text-center">Title</p>
+            </th>
+            <th>
+                <p class="text-center">Action</p>
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.MaBlog)</p>
+            </td>
+            <td>
+                <p class="text-center"><img src="@Url.Content("~/Content/img/blog/" + item.HinhAnh)" alt="" style="width: 200px; height: 150px"></p>
+            </td>
+            <td>
+                <p style="width: 400px; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;">@item.NoiDung</p>
+            </td>
+            <td>
+                <p class="text-center">@item.NgayDang.Value.ToString("MM/dd/yyyy")</p>
+            </td>
+            <td>
+                <p class="text-center">@Html.DisplayFor(modelItem => item.TieuDe)</p>
+            </td>
+            <td style="text-align: center;">
+                <a class="btn btn-outline-success" href="@Url.Action("EditBlog", "BlogManager", new {id = item.MaBlog})">Edit</a>
+                <a class="btn btn-outline-danger" href="@Url.Action("DeleteBlog", "BlogManager", new {id = item.MaBlog})">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,72 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<GYM_MANAGER_PROJECTFSOFT.Models.ProfileDetail>
+
+@{
+    ViewBag.Title = "ListUser";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center">ListUser</h2>
+<table class="table">
+    <thead style="background-color: #446ad7;">
+        <tr style="color: white;">
+            <th scope="col">MaTaiKhoan</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">TaiKhoan</th>
+            <th scope="col">Email</th>
+            <th scope="col">SoDienThoai</th>
+            <th scope="col">HoTen</th>
+            <th scope="col">DiaChi</th>
+            <th scope="col">NgaySinh</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaTaiKhoan</td>
+                <td style="width: 15%;">
+                    <div style="width: 100%; overflow: hidden;">
+                        @if (item.Avatar != null)
+                        {
+                            <img style="width: 100%; height: 250px;" src="@Url.Content("../Content/ImagesGym/" + item.Avatar)" alt="null" />
+
+                        }
+                        else
+                        {
+                            <img style="width: 100%; height: 250px;" src="@Url.Content("../Content/ImagesGym/Avatar_Null.png")" />
+                        }
+                    </div>
+                </td>
+                <td>@item.TaiKhoan</td>
+                <td>@item.Email</td>
+                <td>@item.SoDienThoai</td>
+                <td>@item.HoTen</td>
+                <td>@item.DiaChi</td>
+                @if (item.NgaySinh != null)
+                {
+                    <td>@item.NgaySinh.Value.ToString("MM/dd/yyyy")</td>
+                }
+                else
+                {
+                    <td>@item.NgaySinh</td>
+                }
+                <td>@item.Role</td>
+                <td>
+                    <a class="btn btn-outline-success" href="@Url.Action("Edit", "UserManager", new {MaTaiKhoan = item.MaTaiKhoan})">Edit</a>
+                    <a class="btn btn-outline-danger" href="@Url.Action("Delete", "UserManager", new {MaTaiKhoan = item.MaTaiKhoan})">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p class="text-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+<div class="nav justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("ListUser", new { page = page }))
+</div>
+

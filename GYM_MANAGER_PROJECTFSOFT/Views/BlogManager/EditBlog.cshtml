@@ -1,0 +1,81 @@
+﻿@using GYM_MANAGER_PROJECTFSOFT.Models
+@model BLOG
+
+@{
+    ViewBag.Title = "EditBlog";
+    Layout = "~/Views/AdminLayout/AdminLayout.cshtml";
+}
+
+<h2 style="text-align: center; font-size: 50px; font-weight: 600; color: #4E73DF; margin-top: 50px; margin-left: 7%">Edit Blog</h2>
+
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+<div class="form-group">
+    @using (Html.BeginForm("EditBlog", "BlogManager", FormMethod.Post))
+
+    {
+        @Html.AntiForgeryToken();
+        @Html.HiddenFor(x => x.MaBlog)
+
+        <div class="lable" , style="width: 35%; margin-top: 20px; color: #4E73DF; font-weight: 600; margin-left: 36%; margin-bottom: 20px">
+            <div>
+                <label style="font-weight: 600; ">Tiều Đề</label>
+                @Html.ValidationMessageFor(x => x.TieuDe, "", new { @class = "error" })
+                @Html.TextBoxFor(x => x.TieuDe, new { @class = "form-control", style = "margin-bottom:20px" })
+
+            </div>
+            <div>
+                <label style="font-weight: 600; ">Nội Dung</label>
+                @Html.ValidationMessageFor(x => x.NoiDung, "", new { @class = "error" })
+                @Html.TextAreaFor(x => x.NoiDung, new { @class = "form-control", style = "height:250px;margin-bottom:20px" })
+            </div>
+
+            <div>
+                <label style="font-weight: 600; align-content:center ">Hình Ảnh</label>
+                @Html.ValidationMessageFor(x => x.HinhAnh, "", new { @class = "error" })
+                @Html.TextBoxFor(x => x.HinhAnh, new { @class = "form-control", @rows = "10", @name = "Hinhanh", style = "margin-bottom:20px" })
+            </div>
+            <div>
+                <label style="font-weight: 600; ">Ngày Đăng</label>
+                @Html.TextBoxFor(x => x.NgayDang, new { @class = "form-control", @name = "NgayDang", style = "margin-bottom:20px" })
+                @Html.ValidationMessageFor(x => x.NgayDang, "", new { @class = "error" })
+            </div>
+
+            <div>
+                <span style="color: red">@ViewBag.Message</span>
+            </div>
+
+            <div class="form-group" , style="align-content:center; margin-left:50px">
+                <button type="submit" class="btnAdd" , style="margin-top: 30px; margin-left: 180px; background-color: white; color: #4E73DF; border: 2px solid #4E73DF; ">Update</button>
+            </div>
+
+
+        </div>
+        <script>
+            tinymce.init({
+                selector: '.mytextarea',
+                plugins: [
+                    'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+                    'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+                    'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
+                ],
+                toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
+                    'alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
+            });
+        </script>
+
+    }
+
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</div>
+
+
+
